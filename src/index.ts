@@ -1,11 +1,10 @@
 import createApp from './app';
 import database from './config/database';
 import config from './config/config';
-import { setServers } from "node:dns/promises";
 
 const startServer = async (): Promise<void> => {
-  setServers(["1.1.1.1", "8.8.8.8"]);
   // 1. Connect to MongoDB before accepting traffic
+  console.log('📡 Connecting to database...');
   await database.connect();
 
   // 2. Create Express app

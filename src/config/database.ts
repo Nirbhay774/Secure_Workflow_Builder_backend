@@ -20,8 +20,10 @@ class Database {
     try {
       const conn = await mongoose.connect(config.db.uri, {
         maxPoolSize: 10,
-        serverSelectionTimeoutMS: 5000,
+        serverSelectionTimeoutMS: 30000, // 30 seconds (better for production cold starts)
         socketTimeoutMS: 45000,
+        connectTimeoutMS: 30000,
+        heartbeatFrequencyMS: 10000,
       });
 
       this.isConnected = true;

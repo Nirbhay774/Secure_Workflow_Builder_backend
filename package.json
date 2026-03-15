@@ -5,9 +5,12 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon --watch src --watch .env --ext ts,env --exec ts-node src/index.ts",
-    "build": "tsc",
+    "build": "tsc --noUnusedLocals false --noUnusedParameters false",
     "start": "node dist/index.js",
     "lint": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "keywords": [],
   "author": "",
